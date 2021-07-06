@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import Rate from './Rate';
 const MovieCard = ({movie})=>{
 return(
@@ -29,4 +30,7 @@ return(
   
 )
 }
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+};
 export default MovieCard;

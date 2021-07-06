@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import {
   Button,
   Modal,
@@ -12,7 +12,7 @@ import {
   Col
 } from 'reactstrap';
 
-const ModalExp = ({ handleAdd }) => {
+const AddMovie = ({ handleAdd }) => {
     const [showModal, setShowModal] = useState(false);
     const [newMovie, setNewMovie] = useState({
         title: ``,
@@ -102,5 +102,7 @@ const ModalExp = ({ handleAdd }) => {
       </div>
     );
   };
-  
-  export default ModalExp;
+  AddMovie.propTypes = {
+    handleAdd: PropTypes.func.isRequired,
+  };
+  export default AddMovie;

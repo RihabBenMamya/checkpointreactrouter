@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input } from 'reactstrap';
+import PropTypes from 'prop-types';
 import Rate from './Rate';
 
 const Filter=({setFilterhMovie, setRatingSearch, ratingSearch})=>{
@@ -20,5 +21,9 @@ const Filter=({setFilterhMovie, setRatingSearch, ratingSearch})=>{
         </div>
     )
 }
-
+Filter.propTypes = {
+  setFilterhMovie: PropTypes.func.isRequired,
+  setRatingSearch: PropTypes.func.isRequired,
+  ratingSearch: PropTypes.func.isRequired,
+};
 export default Filter;
