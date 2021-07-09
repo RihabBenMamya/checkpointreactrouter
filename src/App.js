@@ -1,43 +1,36 @@
-import React,{useState} from "react";
+import React from "react";
 import './App.css';
-import MovieList from"./Component/MovieList";
-import Filter from "./Component/Filter";
-import {Movies} from "./Component/Movie";
+import Home from './Home';
+import MovieDescription from './Component/Description'
 import Footer from './Component/Footer';
-import AddMovie from './Component/AddMovie';
+import Navbar from './Component/Navbar'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+ 
+} from "react-router-dom";
 
-const App = () => {
-  const [movies, setMovies] = useState(Movies);
+const App = ({match}) => {
 
-  const [filterMovie, setFilterhMovie] =useState('');
-  const [ratingSearch, setRatingSearch] = useState(0); 
-  const addMovie = (newMovie) => setMovies([...movies, newMovie]);
   return (
     <div className="App">
+       <Navbar/>
       <header className="App-header">
-      <h1>Checkpoint Movie App</h1>
-      <AddMovie handleAdd={addMovie} />
+    
       
       </header>
       <div className='container'>
+      <Router>
+      <Switch>
       
-       
-       <div className='row justify-content-center mt-5'>
-       <Filter  setFilterhMovie={setFilterhMovie} 
-       setRatingSearch={setRatingSearch}
-       ratingSearch={ratingSearch}/>
-       
-       </div>
-       <div className='row mt-5'>
-           <MovieList movies={ filterMovie ? 
-            movies.filter((movie)=>
-            movie.title.toLowerCase().includes(filterMovie.toLowerCase())) 
-            : ratingSearch > 1
-            ? movies.filter((movie) => movie.rating >= ratingSearch)
-            : movies} />    
-  </div>
-          
-    </div>
+      <Route path="/" exact component={Home}/>
+      
+      <Route path={`/:id`} component={MovieDescription}/>
+      
+      </Switch>
+      </Router>  
+      </div>
    
     <Footer />
     </div>

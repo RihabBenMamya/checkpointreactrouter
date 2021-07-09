@@ -2,10 +2,14 @@ import React from "react";
 import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Rate from './Rate';
+import {
+  Link
+} from "react-router-dom";
 const MovieCard = ({movie})=>{
 return(
-  <div className='col-4 mt-2'>
-     <Card style={{ height: `500px` , backgroundColor: 'black'}}>
+  <div className='col-4 mt-2' key={movie.title}>
+<Link to={`/${movie.title}`}>      
+     <Card  hoverable style={{ height: `500px` , backgroundColor: 'black'}}>
         <Card.Title>
           <div className='title'>
             <h6>{movie.title}</h6>
@@ -26,6 +30,8 @@ return(
     </div>
   </Card.Body>
 </Card>
+</Link>
+
 </div>
   
 )
